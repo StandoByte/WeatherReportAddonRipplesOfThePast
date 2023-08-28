@@ -41,8 +41,13 @@ public class InitStands {
     public static final RegistryObject<StandEntityAction> WEATHER_REPORT_BARRAGE = ACTIONS.register("weather_report_barrage", 
             () -> new StandEntityMeleeBarrage(new StandEntityMeleeBarrage.Builder()));
     
+    public static final RegistryObject<StandEntityHeavyAttack> WEATHER_REPORT_FINISHER = ACTIONS.register("weather_report_finisher", 
+            () -> new StarPlatinumUppercut(new StandEntityHeavyAttack.Builder()
+                    .partsRequired(StandPart.ARMS)));
+
     public static final RegistryObject<StandEntityHeavyAttack> WEATHER_REPORT_HEAVY_PUNCH = ACTIONS.register("weather_report_heavy_punch", 
-            () -> new StandEntityHeavyAttack(new StandEntityHeavyAttack.Builder().shiftVariationOf(WEATHER_REPORT_PUNCH)
+            () -> new StandEntityHeavyAttack(new StandEntityHeavyAttack.Builder().shiftVariationOf(WEATHER_REPORT_PUNCH).shiftVariationOf(WEATHER_REPORT_BARRAGE)
+                    .setFinisherVariation(WEATHER_REPORT_FINISHER)
                     .partsRequired(StandPart.ARMS)));
 
         public static final RegistryObject<StandEntityAction> WEATHER_REPORT_WIND = ACTIONS.register("weather_report_wind", 
