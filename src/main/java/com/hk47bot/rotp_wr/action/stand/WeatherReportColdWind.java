@@ -57,7 +57,7 @@ public class WeatherReportColdWind extends StandEntityAction {
             }, 5);
             GeneralUtil.doFractionTimes(() -> {
                 LivingEntity user = userPower.getUser();
-                Vector3d userPos = user.position().add(
+                Vector3d userPos = standEntity.position().add(
                     (Math.random() - 0.5) * (user.getBbWidth() + 1.0), 
                     Math.random() * (user.getBbHeight() + 1.0), 
                     (Math.random() - 0.5) * (user.getBbWidth() + 1.0));
