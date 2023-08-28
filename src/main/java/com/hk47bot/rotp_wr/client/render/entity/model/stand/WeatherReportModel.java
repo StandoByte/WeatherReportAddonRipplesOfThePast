@@ -185,6 +185,23 @@ public class WeatherReportModel extends HumanoidStandModel<WeatherReportEntity> 
                         new RotationAngle(rightForeArm, 0.0F, 0.0F, 0.0F)
                 }))
                 .build(idlePose));
+	    
+	    		        IModelPose<WeatherReportEntity> finisherPose1 = new ModelPose<>(new RotationAngle[] {
+							RotationAngle.fromDegrees(rightArm, 0F, 0F, 90F), 
+							RotationAngle.fromDegrees(rightForeArm, -110F, 0F, 0F)
+        });
+        IModelPose<WeatherReportEntity> finisherPose2 = new ModelPose<>(new RotationAngle[] {
+			RotationAngle.fromDegrees(rightArm, 90F, 0F, -90F), 
+			RotationAngle.fromDegrees(rightForeArm, 0F,0F, 0F)
+        });
+        actionAnim.put(StandPose.HEAVY_ATTACK_FINISHER, new PosedActionAnimation.Builder<WeatherReportEntity>()
+                .addPose(StandEntityAction.Phase.WINDUP, new ModelPoseTransition<>(idlePose, finisherPose1))
+                .addPose(StandEntityAction.Phase.PERFORM, new ModelPoseTransition<>(finisherPose1, finisherPose2))
+                .addPose(StandEntityAction.Phase.RECOVERY, new ModelPoseTransitionMultiple.Builder<>(finisherPose2)
+                        .addPose(0.5F, finisherPose2)
+                        .build(idlePose))
+                .build(idlePose));
+	    
         actionAnim.put(WeatherReportWind.WIND_BLOW, new PosedActionAnimation.Builder<WeatherReportEntity>()
                 .addPose(StandEntityAction.Phase.BUTTON_HOLD, new ModelPose<>(new RotationAngle[] {
 					new RotationAngle(body, 0.0F, 0.0F, 0.0F),
