@@ -37,7 +37,7 @@ public class WeatherReportColdWind extends StandEntityAction {
                         Entity effecttarget = entity;
                         if (effecttarget instanceof LivingEntity){
                             LivingEntity effectTarget = (LivingEntity) effecttarget;
-                        effectTarget.addEffect(new EffectInstance(ModStatusEffects.FREEZE.get(), 15, 0));
+                        effectTarget.addEffect(new EffectInstance(ModStatusEffects.FREEZE.get(), 200, 0));
                     }
                 };
                 });
@@ -45,7 +45,7 @@ public class WeatherReportColdWind extends StandEntityAction {
         if (world.isClientSide()) {
             GeneralUtil.doFractionTimes(() -> {
                 LivingEntity user = userPower.getUser();
-                Vector3d userPos = user.position().add(
+                Vector3d userPos = standEntity.position().add(
                     (Math.random() - 0.5) * (user.getBbWidth() + 1.0), 
                     Math.random() * (user.getBbHeight() + 1.0), 
                     (Math.random() - 0.5) * (user.getBbWidth() + 1.0));
